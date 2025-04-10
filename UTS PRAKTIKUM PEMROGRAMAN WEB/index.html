@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Website Pribadi</title>
+  <link rel="stylesheet" href="gaya/utama.css" />
+  <script>
+    function tampilkanHalaman(id) {
+      const semuaHalaman = document.querySelectorAll('.halaman');
+      semuaHalaman.forEach(h => {
+        h.style.opacity = 0;
+        h.style.display = 'none';
+      });
+      const halamanBaru = document.getElementById(id);
+      halamanBaru.style.display = 'block';
+      setTimeout(() => {
+        halamanBaru.style.opacity = 1;
+      }, 50);
+    }
+    window.onload = () => tampilkanHalaman('beranda');
+  </script>
+</head>
+<body>
+  <div id="kepala">
+    <img src="gambar/logo.jpg" alt="Logo" class="logo" />
+  </div>
+
+  <div id="menu">
+    <a href="#" onclick="tampilkanHalaman('beranda')">Beranda</a>
+    <a href="#" onclick="tampilkanHalaman('pendidikan_formal')">Pendidikan Formal</a>
+    <a href="#" onclick="tampilkanHalaman('pendidikan_nonformal')">Pendidikan Non Formal</a>
+    <a href="#" onclick="tampilkanHalaman('pengalaman')">Pengalaman Organisasi</a>
+    <a href="#" onclick="tampilkanHalaman('galeri')">Galeri Photo</a>
+  </div>
+
+  <div id="konten">
+    <div id="sisi_kiri">
+      <a href="berkas/JOBSHEET 1.zip" download>Jobsheet 1</a><br />
+      <a href="berkas/JOBSHEET 2.zip" download>Jobsheet 2</a><br />
+      <a href="berkas/JOBSHEET 3.zip" download>Jobsheet 3</a>
+    </div>
+
+    <div id="badan">
+      <div id="beranda" class="halaman">
+        <h2>Biodata Pribadi</h2>
+        <img src="gambar/ratu.jpg" alt="Foto Diri" style="width: 150px; height: auto" />
+        <p>Nama: Ratu Intan Muliani</p>
+        <p>NIM: 23076076</p>
+        <p>Alamat: Jln. Musa Enda Air Tawar, Padang</p>
+        <p>Email: ratuintanmuliani1502@gmail.com</p>
+      </div>
+
+      <div id="pendidikan_formal" class="halaman">
+        <h2>Pendidikan Formal</h2>
+        <ul>
+          <li>SD 09 Belakang Balok Bukittinggi - Tahun</li>
+          <li>SMP 1 Bukittinggi - Tahun</li>
+          <li>SMA 3 Bukittinggi - Tahun</li>
+          <li>Universitas Negeri Padang - 2023</li>
+        </ul>
+      </div>
+
+      <div id="pendidikan_nonformal" class="halaman">
+        <h2>Pendidikan Non Formal</h2>
+        <ul>
+          <li>Tidak Ada</li>
+        </ul>
+      </div>
+
+      <div id="pengalaman" class="halaman">
+        <h2>Pengalaman Organisasi</h2>
+        <ul>
+          <li>Anggota Organisasi Kesenian Seni Tingkat Sekolah 2021–2023</li>
+          <li>Angkatan Muda Kesatria Muda BEM FT UNP</li>
+        </ul>
+      </div>
+
+      <div id="galeri" class="halaman">
+        <h2>Galeri Photo</h2>
+        <div class="galeri-grid">
+          <img src="gambar/foto 1.jpg" alt="Foto 1" />
+          <img src="gambar/foto 2.jpg" alt="Foto 2" />
+          <img src="gambar/foto 3.jpg" alt="Foto 3" />
+          <img src="gambar/foto 4.jpg" alt="Foto 4" />
+          <img src="gambar/foto 5.jpg" alt="Foto 5" />
+          <img src="gambar/foto 6.jpg" alt="Foto 6" />
+        </div>
+      </div>
+    </div>
+
+    <div id="sisi_kanan">
+      <a href="berkas/JOBSHEET 4.zip" download>Jobsheet 4</a><br />
+      <a href="berkas/JOBSHEET 5.zip" download>Jobsheet 5</a><br />
+    </div>
+  </div>
+
+  <div id="kaki">
+    <p>23076076</p>
+    <p>Ratu Intan Muliani</p>
+    <p>Pendidikan Teknik Informatika FT UNP</p>
+  </div>
+
+  <!-- Modal untuk Gambar -->
+  <div id="myModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img class="modal-content" id="imgPreview" />
+  </div>
+
+  <script>
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("imgPreview");
+    const closeBtn = document.querySelector(".modal-close");
+
+    document.querySelectorAll(".galeri-grid img").forEach(img => {
+      img.addEventListener("click", function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+      });
+    });
+
+    closeBtn.onclick = function () {
+      modal.style.display = "none";
+    };
+
+    modal.onclick = function (event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+  </script>
+</body>
+</html>
